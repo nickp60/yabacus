@@ -1,0 +1,64 @@
+Wed Nov 29 13:00:09 GMT 2017	cp ~/GitHub/riboSeed/manuscript_results/simulated_genome/simulatedGenomeResults_1/good_ref/seed/NC_000913.3_0_cluster_0/NC_000913.3_0_cluster_0_mapping_iteration_0/NC_000913.3_0_cluster_0_mappedreadS.fastq ./in.fastq 
+Wed Nov 29 13:00:13 GMT 2017	paste - - - - < in.fastq | cut -f 1,2 | sed 's/^@/>/' | tr "	" "
+" > in.fa 
+Wed Nov 29 13:00:22 GMT 2017	makeblastdb -in ./in.fa -title testdb -out testdb -dbtype nucl 
+Wed Nov 29 13:00:32 GMT 2017	blastn -h 
+Wed Nov 29 13:01:30 GMT 2017	blastn -h -db ./testdb -query in.fa -outfmt 6 -out ./blastn.tab 
+Wed Nov 29 13:01:36 GMT 2017	blastn  -db ./testdb -query in.fa -outfmt 6 -out ./blastn.tab 
+Wed Nov 29 13:08:46 GMT 2017	blastn --help 
+Wed Nov 29 13:08:57 GMT 2017	blastn -help 
+Wed Nov 29 13:55:06 GMT 2017	llapack 
+Wed Nov 29 13:55:18 GMT 2017	sudo apt-get install llapack 
+Wed Nov 29 13:56:05 GMT 2017	sudo apt-get install liblapack-dev -y ; sudo apt-get install liblapack3 -y ; sudo apt-get install libopenblas-base -y ; sudo apt-get install libopenblas-dev -y 
+https://micans.org/mcl/man/clmprotocols.html#blast
+Tue Dec  5 10:07:03 GMT 2017	cut -f 1,2,11 ./blastn.tab > seq.abc 
+Tue Dec  5 10:08:04 GMT 2017	mcxload -abc seq.abc --stream-mirror --stream-neg-log10 -stream-tf 'ceil(200)' -o seq.mci -write-tab seq.tab 
+Tue Dec  5 10:10:29 GMT 2017	head seq.tab 
+Tue Dec  5 10:10:40 GMT 2017	more seq.tab 
+Tue Dec  5 10:10:50 GMT 2017	more seq.mci 
+Tue Dec  5 10:12:57 GMT 2017	for i in mcl 1.4 2 4 6; do mcl seq.mci -I $i; done 
+Tue Dec  5 10:49:26 GMT 2017	head out.seq.mci.I60 
+Thu Dec  7 15:11:28 GMT 2017	for i in 1.4 2 4 6; do mcl seq.mci -I $i; done 
+Thu Dec  7 15:12:28 GMT 2017	for i in 14 20 40 60; do mcxdump -icl out.seq.mci.I${i} -tabr seq.tab -o dump.seq.mci.I{i}; done 
+Thu Dec  7 15:13:19 GMT 2017	for i in 14 20 40 60; do mcxdump -icl out.seq.mci.I${i} -tabr seq.tab -o dump.seq.mci.I${i}; done 
+Thu Dec  7 15:13:31 GMT 2017	ls 
+Thu Dec  7 15:13:43 GMT 2017	rm dump.seq.mci.I\{i\} 
+Thu Dec  7 15:14:01 GMT 2017	head dump.seq.mci.I14 
+Thu Dec  7 15:22:15 GMT 2017	wc dump.seq.mci.I14 
+Thu Dec  7 15:31:37 GMT 2017	ls 
+Thu Dec  7 15:48:27 GMT 2017	sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 33D40BC6 
+Thu Dec  7 15:48:37 GMT 2017	sudo add-apt-repository "deb http://rodeo-deb.yhat.com/ rodeo main" 
+Thu Dec  7 15:48:45 GMT 2017	kptrk 
+Mon Dec 11 13:42:40 GMT 2017	cat kptrk_README 
+Mon Dec 11 13:42:47 GMT 2017	paste - - - - < 2rdna_mapping_iter_1.fastq | cut -f 1,2 | sed 's/^@/>/' | tr "" "" > 2rDNA.fa 
+Mon Dec 11 13:42:55 GMT 2017	samtools fastq ./simulatedGenomeResults_1/ref/seed/scannedScaffolds_mapping_for_iteration_1/scannedScaffolds_mapping_iteration_1.bam 
+Mon Dec 11 13:43:02 GMT 2017	samtools fastq ./simulatedGenomeResults_1/ref/seed/scannedScaffolds_mapping_for_iteration_1/scannedScaffolds_mapping_iteration_1.bam   > 2rdna_mapping_iter_1.fastq 
+Mon Dec 11 13:43:06 GMT 2017	paste - - - - < 2rdna_mapping_iter_1.fastq | cut -f 1,2 | sed 's/^@/>/' | tr "" "" > 2rDNA.fa 
+Mon Dec 11 13:43:18 GMT 2017	cat kptrk_README 
+Mon Dec 11 13:43:40 GMT 2017	makeblastdb -in ./2rDNA.fa -title 2testdb -out 2testdb -dbtype nucl 
+Mon Dec 11 13:43:49 GMT 2017	head 2rDNA.fa 
+Mon Dec 11 13:44:28 GMT 2017	samtools fastq ./simulatedGenomeResults_1/ref/seed/scannedScaffolds_mapping_for_iteration_1/scannedScaffolds_mapping_iteration_1.bam   -h 2rdna_mapping_iter_1.fastq 
+Mon Dec 11 13:47:07 GMT 2017	samtools fastq ./simulatedGenomeResults_1/ref/seed/scannedScaffolds_mapping_for_iteration_1/scannedScaffolds_mapping_iteration_1.bam   -0 2rdna_mapping_iter_1.fastq 
+Mon Dec 11 13:47:15 GMT 2017	samtools fastq ./simulatedGenomeResults_1/ref/seed/scannedScaffolds_mapping_for_iteration_1/scannedScaffolds_mapping_iteration_1.bam   -0 2rdna_mapping_iter_1.fastq -h 
+Mon Dec 11 13:48:06 GMT 2017	samtools fastq ./simulatedGenomeResults_1/ref/seed/scannedScaffolds_mapping_for_iteration_1/scannedScaffolds_mapping_iteration_1.bam   > 2rdna_mapping_iter_1.fastq 
+Mon Dec 11 13:48:12 GMT 2017	head 2rdna_mapping_iter_1.fastq 
+Mon Dec 11 13:48:21 GMT 2017	paste - - - - < 2rdna_mapping_iter_1.fastq | cut -f 1,2 | sed 's/^@/>/' | tr "" "" > 2rDNA.fa 
+Mon Dec 11 13:48:25 GMT 2017	head 2rDNA.fa 
+Mon Dec 11 13:48:53 GMT 2017	tr 
+Mon Dec 11 13:48:56 GMT 2017	tr --help 
+Mon Dec 11 13:51:04 GMT 2017	samtools fasta ./simulatedGenomeResults_1/ref/seed/scannedScaffolds_mapping_for_iteration_1/scannedScaffolds_mapping_iteration_1.bam   > 2rRDNA.fasta 
+Mon Dec 11 13:51:11 GMT 2017	samtools fasta ./simulatedGenomeResults_1/ref/seed/scannedScaffolds_mapping_for_iteration_1/scannedScaffolds_mapping_iteration_1.bam   > 2rDNA.fasta 
+Mon Dec 11 13:51:18 GMT 2017	head 2rDNA.fasta 
+Mon Dec 11 13:51:24 GMT 2017	samtools fasta ./simulatedGenomeResults_1/ref/seed/scannedScaffolds_mapping_for_iteration_1/scannedScaffolds_mapping_iteration_1.bam   > 2rDNA.fa 
+Mon Dec 11 13:51:29 GMT 2017	rm 2rRDNA.fasta 
+Mon Dec 11 13:51:34 GMT 2017	rm 2rDNA.fasta 
+Mon Dec 11 13:51:44 GMT 2017	makeblastdb -in ./2rDNA.fa -title 2testdb -out 2testdb -dbtype nucl 
+Mon Dec 11 13:51:51 GMT 2017	cat kptrk_README 
+Mon Dec 11 13:52:25 GMT 2017	blastn  -db ./2testdb -query 2rDNA.fa -outfmt 6 -out ./2rDNA_blastn.tab 
+Mon Dec 11 15:23:53 GMT 2017	blastn  -db ./2testdb -query 2rDNA.fa -outfmt 6 -out ./2rDNA_blastn.tab -h 
+Mon Dec 11 15:23:56 GMT 2017	blastn  -db ./2testdb -query 2rDNA.fa -outfmt 6 -out ./2rDNA_blastn.tab -help 
+Mon Dec 11 15:26:10 GMT 2017	blastn  -db ./2testdb -query 2rDNA.fa --ungapped -outfmt 6 -out ./2rDNA_blastn_nogap.tab -help 
+Mon Dec 11 15:26:16 GMT 2017	blastn  -db ./2testdb -query 2rDNA.fa -ungapped -outfmt 6 -out ./2rDNA_blastn_nogap.tab -help 
+Mon Dec 11 15:26:21 GMT 2017	blastn  -db ./2testdb -query 2rDNA.fa -ungapped -outfmt 6 -out ./2rDNA_blastn_nogap.tab 
+Mon Dec 11 17:23:43 GMT 2017	blastn  -db ./2testdb -query 2rDNA.fa -ungapped -outfmt 6 -evalue 10e-5 -out ./2rDNA_blastn_nogap_5.tab 
+Mon Dec 11 18:06:07 GMT 2017	kptrk 
