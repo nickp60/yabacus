@@ -62,3 +62,67 @@ Mon Dec 11 15:26:16 GMT 2017	blastn  -db ./2testdb -query 2rDNA.fa -ungapped -ou
 Mon Dec 11 15:26:21 GMT 2017	blastn  -db ./2testdb -query 2rDNA.fa -ungapped -outfmt 6 -out ./2rDNA_blastn_nogap.tab 
 Mon Dec 11 17:23:43 GMT 2017	blastn  -db ./2testdb -query 2rDNA.fa -ungapped -outfmt 6 -evalue 10e-5 -out ./2rDNA_blastn_nogap_5.tab 
 Mon Dec 11 18:06:07 GMT 2017	kptrk 
+Wed Dec 13 13:21:17 GMT 2017	bwa index ./simulatedGenomeResults_1/toyGenome/coli_genome/concatenated_seq.fasta 
+Wed Dec 13 13:23:14 GMT 2017	bwa mem -bh ./simulatedGenomeResults_1/toyGenome/coli_genome/concatenated_seq.fasta ./simulatedGenomeResults_1/toyGenome/reads_100_300_1.fq.gz ./simulatedGenomeResults_1/toyGenome/reads_100_300_2.fq.gz > mapped_to_short_ref.bam 
+Wed Dec 13 13:23:21 GMT 2017	bwa mem -Bh ./simulatedGenomeResults_1/toyGenome/coli_genome/concatenated_seq.fasta ./simulatedGenomeResults_1/toyGenome/reads_100_300_1.fq.gz ./simulatedGenomeResults_1/toyGenome/reads_100_300_2.fq.gz > mapped_to_short_ref.bam 
+Wed Dec 13 13:26:05 GMT 2017	samtools fasta ./mapped_to_short_ref.bam > mapped_fa 
+Wed Dec 13 13:26:15 GMT 2017	head mapped_fa 
+Wed Dec 13 13:26:28 GMT 2017	samtools fasta ./mapped_to_short_ref.bam > mapped.fa 
+Wed Dec 13 13:26:34 GMT 2017	rm mapped_fa 
+Wed Dec 13 13:27:47 GMT 2017	makeblastdb -in ./mapped.fa -title mappeddb -out mappeddb -dbtype nucl 
+Wed Dec 13 13:28:23 GMT 2017	blastn  -db ./mappeddb -query mapped.fa -ungapped -outfmt 6 -evalue 10e-5 -out ./mapped.tab 
+Wed Dec 13 13:33:43 GMT 2017	./make2rDNAgenome.sh 2 
+Wed Dec 13 13:34:51 GMT 2017	./make2rDNAgenome.sh 2 
+Wed Dec 13 13:35:01 GMT 2017	rm ./simulatedGenomeResults_2/ -r 
+Wed Dec 13 13:35:02 GMT 2017	./make2rDNAgenome.sh 2 
+Wed Dec 13 13:35:44 GMT 2017	./make2rDNAgenome.sh 2 
+Wed Dec 13 13:35:46 GMT 2017	rm ./simulatedGenomeResults_2/ -r 
+Wed Dec 13 13:35:46 GMT 2017	./make2rDNAgenome.sh 2 
+Wed Dec 13 13:38:28 GMT 2017	rm ./simulatedGenomeResults_2/ -r 
+Wed Dec 13 13:38:29 GMT 2017	./make2rDNAgenome.sh 2 
+Wed Dec 13 13:40:56 GMT 2017	echo "here we actually start" 
+Wed Dec 13 13:41:55 GMT 2017	mkdir 2rDNA; bwa mem -Bh ./simulatedGenomeResults_2/toyGenome/coli_genome/concatenated_seq.fasta ./simulatedGenomeResults_1/toyGenome/reads_100_300_1.fq.gz ./simulatedGenomeResults_1/toyGenome/reads_100_300_2.fq.gz > 2rDNA/mapped_to_short_ref.bam 
+Wed Dec 13 13:42:06 GMT 2017	bwa index ./simulatedGenomeResults_2/toyGenome/coli_genome/concatenated_seq.fasta 
+Wed Dec 13 13:42:38 GMT 2017	mkdir 2rDNA; bwa mem -Bh ./simulatedGenomeResults_2/toyGenome/coli_genome/concatenated_seq.fasta ./simulatedGenomeResults_2/toyGenome/reads_100_300_1.fq.gz ./simulatedGenomeResults_2/toyGenome/reads_100_300_2.fq.gz > 2rDNA/mapped_to_short_ref.bam 
+Wed Dec 13 13:43:39 GMT 2017	samtools fasta ./2rDNA/mapped_to_short_ref.bam > 2rDNA/mapped.fa 
+Wed Dec 13 13:44:34 GMT 2017	makeblastdb -in ./2rDNA/mapped.fa -title db -out ./2rDNA/db -dbtype nucl 
+Wed Dec 13 13:44:49 GMT 2017	ls 2rDNA 
+Wed Dec 13 13:45:44 GMT 2017	blastn  -db ./2rDNA/db -query 2rDNA/mapped.fa -ungapped -outfmt 6 -evalue 10e-5 -out ./2rDNA/mapped.tab 
+Wed Dec 13 14:06:28 GMT 2017	head 2rDNA/mapped_to_short_ref.bam 
+Wed Dec 13 14:07:34 GMT 2017	cat ./kptrk_README 
+Wed Dec 13 14:08:54 GMT 2017	bwa mem -h ./simulatedGenomeResults_2/toyGenome/coli_genome/concatenated_seq.fasta ./simulatedGenomeResults_2/toyGenome/reads_100_300_1.fq.gz ./simulatedGenomeResults_2/toyGenome/reads_100_300_2.fq.gz > 2rDNA/mapped_to_short_ref.sam 
+Wed Dec 13 14:08:59 GMT 2017	bwa mem  ./simulatedGenomeResults_2/toyGenome/coli_genome/concatenated_seq.fasta ./simulatedGenomeResults_2/toyGenome/reads_100_300_1.fq.gz ./simulatedGenomeResults_2/toyGenome/reads_100_300_2.fq.gz > 2rDNA/mapped_to_short_ref.sam 
+Wed Dec 13 14:28:28 GMT 2017	hean 2rDNA/mapped_to_short_ref.sam 
+Wed Dec 13 14:28:32 GMT 2017	head 2rDNA/mapped_to_short_ref.sam 
+Wed Dec 13 14:29:31 GMT 2017	~/bin/pirs-2.0.2/pirs 
+Wed Dec 13 14:29:41 GMT 2017	~/bin/pirs-2.0.2/pirs simulate 
+Wed Dec 13 14:29:56 GMT 2017	~/bin/pirs-2.0.2/pirs simulate -h 
+Wed Dec 13 14:30:26 GMT 2017	art_illumina 
+Wed Dec 13 14:30:45 GMT 2017	conda install art 
+Wed Dec 13 14:40:02 GMT 2017	art_illumina 
+Wed Dec 13 14:42:41 GMT 2017	echo "restarting with single end reads cause mapping got too complicated for now 
+Wed Dec 13 14:42:54 GMT 2017	./make2rDNAgenome.sh 3 
+Wed Dec 13 14:43:23 GMT 2017	ls ./simulatedGenomeResults_3/toyGenome/ 
+Wed Dec 13 14:44:01 GMT 2017	rm ./simulatedGenomeResults_3 -r; ./make2rDNAgenome.sh 3 
+Wed Dec 13 14:44:19 GMT 2017	rm ./simulatedGenomeResults_3 -r; ./make2rDNAgenome.sh 3 
+Wed Dec 13 14:46:02 GMT 2017	bwa index ./simulatedGenomeResults_3/toyGenome/coli_genome/concatenated_seq.fasta 
+Wed Dec 13 14:46:19 GMT 2017	rm 2rDNA/ -r 
+Wed Dec 13 14:47:01 GMT 2017	mkdir 2rDNA; bwa mem -h ./simulatedGenomeResults_3/toyGenome/coli_genome/concatenated_seq.fasta ./simulatedGenomeResults_3/toyGenome/reads.fq  > 2rDNA/mapped_to_short_ref.sam 
+Wed Dec 13 14:47:06 GMT 2017	mkdir 2rDNA; bwa mem h ./simulatedGenomeResults_3/toyGenome/coli_genome/concatenated_seq.fasta ./simulatedGenomeResults_3/toyGenome/reads.fq  > 2rDNA/mapped_to_short_ref.sam 
+Wed Dec 13 14:47:16 GMT 2017	bwa mem ./simulatedGenomeResults_3/toyGenome/coli_genome/concatenated_seq.fasta ./simulatedGenomeResults_3/toyGenome/reads.fq  > 2rDNA/mapped_to_short_ref.sam 
+Wed Dec 13 15:21:54 GMT 2017	samtools fasta ./2rDNA/mapped_to_short_ref.bam > 2rDNA/mapped.fa 
+Wed Dec 13 15:21:58 GMT 2017	samtools fasta ./2rDNA/mapped_to_short_ref.sam > 2rDNA/mapped.fa 
+Wed Dec 13 15:22:12 GMT 2017	makeblastdb -in ./2rDNA/mapped.fa -title db -out ./2rDNA/db -dbtype nucl 
+Wed Dec 13 15:22:19 GMT 2017	blastn  -db ./2rDNA/db -query 2rDNA/mapped.fa -ungapped -outfmt 6 -evalue 10e-5 -out ./2rDNA/mapped.tab 
+Wed Dec 13 16:10:17 GMT 2017	./make2rDNAgenome.sh 5 
+Wed Dec 13 16:10:42 GMT 2017	./make2rDNAgenome.sh 5 
+Wed Dec 13 16:10:45 GMT 2017	./make2rDNAgenome.sh 6 
+Wed Dec 13 16:11:56 GMT 2017	rm simulatedGenomeResults_5/ -r 
+Wed Dec 13 16:12:00 GMT 2017	rm simulatedGenomeResults_6/ -r 
+Wed Dec 13 16:12:02 GMT 2017	./make2rDNAgenome.sh 5 
+Wed Dec 13 16:14:08 GMT 2017	rm simulatedGenomeResults_5/ -r 
+Wed Dec 13 16:14:10 GMT 2017	./make2rDNAgenome.sh 5 
+Wed Dec 13 16:50:35 GMT 2017	rm simulatedGenomeResults_5/ -r 
+Wed Dec 13 16:50:37 GMT 2017	./make2rDNAgenome.sh 5 
+Wed Dec 13 17:06:57 GMT 2017	git status 
+Wed Dec 13 17:07:19 GMT 2017	git add -u 
