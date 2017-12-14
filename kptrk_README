@@ -126,3 +126,21 @@ Wed Dec 13 16:50:35 GMT 2017	rm simulatedGenomeResults_5/ -r
 Wed Dec 13 16:50:37 GMT 2017	./make2rDNAgenome.sh 5 
 Wed Dec 13 17:06:57 GMT 2017	git status 
 Wed Dec 13 17:07:19 GMT 2017	git add -u 
+Wed Dec 13 17:07:35 GMT 2017	git commit -m "streamlined the runner script" 
+Wed Dec 13 17:07:39 GMT 2017	git push 
+Thu Dec 14 09:22:11 GMT 2017	spades 
+Thu Dec 14 09:22:15 GMT 2017	spades.py 
+Thu Dec 14 09:22:35 GMT 2017	python3.5 `which spades.py` 
+Thu Dec 14 09:23:54 GMT 2017	python3.5 `which spades.py` -k 21 -s ./simulatedGenomeResults_5/toyGenome/reads.fq -o ./test_21/ 
+Thu Dec 14 09:24:55 GMT 2017	makeblastdb -in ./test_21/contigs.fasta -title test21 -out ./test21 -dbtype nucl 
+Thu Dec 14 09:25:39 GMT 2017	blastn  -db ./test21 -query test_21/contigs.fasta -ungapped -outfmt 6 -evalue 10e-5 -out ./test_21/test.tab 
+Thu Dec 14 09:46:10 GMT 2017	cat test_21/contigs.fasta | grep ">" 
+Thu Dec 14 09:46:26 GMT 2017	python3.5 `which spades.py` -k 15 -s ./simulatedGenomeResults_5/toyGenome/reads.fq -o ./test_21/ 
+Thu Dec 14 09:46:31 GMT 2017	cat test_21/contigs.fasta | grep ">" 
+Thu Dec 14 09:47:03 GMT 2017	python3.5 `which spades.py` -k 9 -s ./simulatedGenomeResults_5/toyGenome/reads.fq -o ./test_21/ 
+Thu Dec 14 09:47:08 GMT 2017	cat test_21/contigs.fasta | grep ">" 
+Thu Dec 14 09:47:28 GMT 2017	python3.5 `which spades.py` -k 9 -s ./simulatedGenomeResults_5/toyGenome/reads.fq -o ./test_9/ 
+Thu Dec 14 10:23:44 GMT 2017	convert -delay 60 -loop 0 network_retained_depth_*.png network_reduction_2.gif 
+Thu Dec 14 13:59:48 GMT 2017	convert -delay 60 -loop 0 network_retained_depth_*.png network_reduction_2.gif 
+Thu Dec 14 17:16:38 GMT 2017	git status 
+Thu Dec 14 17:16:53 GMT 2017	git add -u 
